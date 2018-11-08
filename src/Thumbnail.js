@@ -4,7 +4,7 @@ export default class Thumbnail extends Component {
   render () {
     return (
       <div>
-        <img src={this.props.thumbnail.src}>
+        <img src={this.props.thumbnail.url} />
       </div>
     )
   }

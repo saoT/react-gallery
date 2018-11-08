@@ -22,19 +22,21 @@ import gallery from './gallery.json';
 
 export default class Gallery extends Component {
 
-  state = { displayed : gallery[0] } // prop passee au screen
+  // OPT : passage de l'index
+  // OPT : regarder si on peut destructurer
+  state = { displayed : gallery[0], index: 0 } // prop passee au screen
 
   displayImg = (index) => {
-    displayed = gallery[index];
-    this.setState({ displayed : displayed});
+    const displayed = gallery[index];
+    this.setState({ displayed: displayed, index: index });
   } // handler qui va etre passe au thumbnail
 
   render () {
     return (
       <div>
-        <Screen displayed={this.state.displayed} displayImg={this.displayImg}/>
+        <Screen displayed={this.state.displayed} index={this.state.index} displayImg={this.displayImg}/>
         {
-          gallery.map( (thumbnail, i) => { <Thumbnail displayImg={this.displayImg}/> })
+          gallery.map( (thumbnail, i) => <Thumbnail displayImg={this.displayImg} thumbnail={thumbnail} key={i}/>)
         }
       </div>
     )
