@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 
-const style = {
-  width: '300px'
-}
-
 
 export default class Screen extends Component {
 
@@ -16,15 +12,31 @@ export default class Screen extends Component {
   }
 
   render () {
+
+    const imgCount = this.props.gallery.length
+    const imgWidth = 300 
+
+    const railStyle = {
+      width: imgCount * imgWidth + 'px',
+      left: -imgWidth * this.props.index + 'px'
+    }
+
     return (
       <div>
         <div className="previous" onClick={this.displayPrevious}>PREV</div>
         <div className="displayed">
           <div className="window">
-            <div className="rail">
-              <div className="img-container">
-                <img style={style} src={this.props.displayed.url}/>
-              </div>
+            <div style={railStyle} className="rail">
+             {
+              this.props.gallery.map( (img, i) => {
+                return (
+                  <div className="img-container">
+                    <img src={img.url}/>
+                  </div>
+                )
+              })
+              }
+              
             </div>
           </div>
         </div>

@@ -35,24 +35,24 @@
 
 
 .window {
-  overflow: hidden;
+  /*overflow: hidden;*/
   height: 200px;
   width: 300px;
-  border : 10px solid red;
+  border: 3px solid red;
 }
 
 .rail {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
-  display: flex;
-  border : 10px solid green;
+  transition: left 0.4s;
 }
 
 .img-container {
+  display: inline-block;
+  top: 0;
   height: 200px;
   width: 300px;
-  border : 10px solid blue;
 }
 
 .img-container img {
