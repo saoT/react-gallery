@@ -27,6 +27,9 @@ export default class Gallery extends Component {
   state = { displayed : gallery[0], index: 0 } // prop passee au screen
 
   displayImg = (index) => {
+
+    index = (gallery.length + index) % gallery.length;
+
     const displayed = gallery[index];
     this.setState({ displayed: displayed, index: index });
   } // handler qui va etre passe au thumbnail
@@ -36,7 +39,7 @@ export default class Gallery extends Component {
       <div>
         <Screen displayed={this.state.displayed} index={this.state.index} displayImg={this.displayImg}/>
         {
-          gallery.map( (thumbnail, i) => <Thumbnail displayImg={this.displayImg} thumbnail={thumbnail} key={i}/>)
+          gallery.map( (thumbnail, i) => <Thumbnail index={i} displayImg={this.displayImg} thumbnail={thumbnail} key={i}/>)
         }
       </div>
     )
